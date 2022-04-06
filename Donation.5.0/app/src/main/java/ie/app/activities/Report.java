@@ -44,12 +44,12 @@ public class Report extends Base implements OnItemClickListener, View.OnClickLis
         listView = (ListView) findViewById(R.id.reportList);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.report_swipe_refresh_layout);
 
-        new GetAllTask(this).execute("/donations");
+        new GetAllTask(this).execute("/");
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new GetAllTask(Report.this).execute("/donations");
+                new GetAllTask(Report.this).execute("/");
             }
         });
 
@@ -58,7 +58,7 @@ public class Report extends Base implements OnItemClickListener, View.OnClickLis
     @Override
     public void onItemClick(AdapterView<?> arg0, View row, int pos, long id) {
         String _id = row.getTag().toString();
-        new GetTask(this).execute("/donations", _id );
+        new GetTask(this).execute("/", _id );
     }
     @Override
     public void onClick(View view) {
@@ -79,7 +79,7 @@ public class Report extends Base implements OnItemClickListener, View.OnClickLis
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                new DeleteTask(Report.this).execute("/donations", donation._id);
+                new DeleteTask(Report.this).execute("/", donation._id);
             }
         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -213,7 +213,7 @@ public class Report extends Base implements OnItemClickListener, View.OnClickLis
             String s = result;
             Log.v("donate", "DELETE REQUEST : " + s);
 
-            new GetAllTask(Report.this).execute("/donations");
+            new GetAllTask(Report.this).execute("/");
 
             if (dialog.isShowing())
                 dialog.dismiss();
@@ -251,7 +251,7 @@ public class Report extends Base implements OnItemClickListener, View.OnClickLis
             methodView.setText(donation.paymenttype);
             upvotesView.setText("" + donation.upvotes);
 
-            view.setTag(donation._id); // setting the 'row' id to the id of the donation
+            view.setTag(donation._id);
 
             return view;
         }

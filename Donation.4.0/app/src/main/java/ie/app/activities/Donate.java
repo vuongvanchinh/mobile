@@ -56,7 +56,7 @@ public class Donate extends Base {
         amountTotal   = (TextView)     findViewById(R.id.totalSoFar);
 
         amountPicker.setMinValue(0);
-        amountPicker.setMaxValue(1000);
+        amountPicker .setMaxValue(1000);
         progressBar.setMax(10000);
         amountTotal.setText("$" + app.totalDonated);
         progressBar.setProgress(app.totalDonated);

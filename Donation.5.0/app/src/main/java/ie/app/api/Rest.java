@@ -13,7 +13,7 @@ public class Rest {
 	private static HttpURLConnection 	httpCon = null;
 	private static URL 					url;
 
-	private static final String hostURL = "http://donationweb-4-0.herokuapp.com";
+	private static final String hostURL = "https://motel-app.herokuapp.com/api/donations";
 	private static final String LocalhostURL = "http://192.168.0.13:3000";
 	
 
@@ -32,7 +32,7 @@ public class Rest {
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
+
 	public static String get(String url) {
 
         BufferedReader reader = null;
@@ -61,11 +61,10 @@ public class Rest {
         catch (Exception e) {
 			Log.v("donate","GET REQUEST ERROR" + e.getMessage());
 		}
-
+		Log.v("respond", stringBuilder.toString());
         return stringBuilder.toString();
 	}
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////
 	public static String delete(String url) {
 
 		String response = null;
@@ -88,31 +87,11 @@ public class Rest {
 		return response;
 	}
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////
 	public static String put(String url, String json) {
 		String result = "";
-		/*try {
-			String strRequest = getBase() + url;
-			HttpPut putRequest = new HttpPut(strRequest);
-			putRequest.setHeader("Content-type", "application/json");
-			putRequest.setHeader("accept", "application/json");
-			//putRequest.setHeader("accept","text/plain");
-			StringEntity s = new StringEntity(json);
-			//s.setContentEncoding("UTF-8");
-			s.setContentType("application/json");
-
-			putRequest.setEntity(s);
-
-			HttpResponse response = httpClient.execute(putRequest);
-			result = getResult(response).toString();
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}*/
 		return result;
 	}
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////
 	public static String post(String url, String json) {
 
         OutputStreamWriter writer = null;
@@ -127,7 +106,6 @@ public class Rest {
 
             Log.v("donate", "POST REQUEST is : " + httpCon.getRequestMethod() + " " + httpCon.getURL());
 
-            // read the output from the server
             writer = new OutputStreamWriter(httpCon.getOutputStream());
             writer.write(json);
             writer.close();

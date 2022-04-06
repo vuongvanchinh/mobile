@@ -36,9 +36,6 @@ public class DonationApp extends Application
     public void onCreate()
     {
         super.onCreate();
-        Log.v("Donate", "Donation App Started");
-//        dbManager = new DBManager(this);
-//        Log.v("Donate", "Database Created");
 
     }
 

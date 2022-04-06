@@ -1,7 +1,5 @@
 package ie.app.activities;
-/**
- * Created by ddrohan on 22/10/2015.
- */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -20,20 +18,9 @@ public class Base extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         app = (DonationApp) getApplication();
-
-//        app.dbManager.open();
-//        app.dbManager.setTotalDonated(this);
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        app.dbManager.close();
-//    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_donate, menu);
         return true;
     }

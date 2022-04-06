@@ -81,7 +81,7 @@ public class Donate extends Base {
         {
             Donation new_donation = new Donation(donatedAmount, method, 0);
             app.newDonation(new_donation);
-            new InsertTask(this).execute("/donation", new_donation);
+//            new InsertTask(this).execute("/", new_donation);
             progressBar.setProgress(app.totalDonated);
             String totalDonatedStr = "$" + app.totalDonated;
             amountTotal.setText(totalDonatedStr);
@@ -89,7 +89,7 @@ public class Donate extends Base {
     }
 
 
-    @Override
+
     public void reset(MenuItem item)
     {
         app.donations.clear();
@@ -153,7 +153,7 @@ public class Donate extends Base {
     @Override
     public void onResume() {
         super.onResume();
-        new GetAllTask(this).execute("/donations");
+        new GetAllTask(this).execute("/");
     }
 
 
